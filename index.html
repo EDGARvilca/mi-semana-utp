@@ -10,13 +10,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./sync.css" />
 </head>
 <body>
   <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
   <main class="shell">
     <header class="topbar">
       <div class="brand"><span class="brand-mark">U+</span><div><strong>Mi Semana UTP</strong><small>Ciclo 2026-2</small></div></div>
-      <div class="today" id="todayLabel"></div>
+      <div class="top-actions"><button id="syncButton" class="sync-button" type="button"><span class="sync-icon">↻</span><span>Sincronizar UTP+class</span></button><div class="today" id="todayLabel"></div></div>
     </header>
 
     <section class="welcome">
@@ -36,6 +37,7 @@
       <button class="tab" data-view="schedule">Horario</button>
       <button class="tab" data-view="tasks">Actividades</button>
     </nav>
+    <div id="syncNotice" class="sync-notice" role="status" aria-live="polite" hidden></div>
 
     <section id="overviewView" class="view active">
       <div class="section-heading"><div><p class="eyebrow">LO PRÓXIMO</p><h2>Prioridades de la semana</h2></div><button class="text-button" data-go="tasks">Ver todas →</button></div>
