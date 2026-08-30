@@ -21,9 +21,10 @@ async function extractFromUtp(tabId){
   return rows.map(row=>{
     const lines=[...new Set(row.lines)];const dateLine=lines.find(x=>/^(Vence|Desde):/i.test(x))||"";const status=lines.find(x=>/^(Por entregar|Programada|Vencida|Entregada|Calificada)$/i.test(x))||"";
     const course=lines.find(x=>Object.keys(COURSE_MAP).some(k=>normalize(k)===normalize(x)))||"ANÁLISIS Y DISEÑO DE SISTEMAS DE INFORMACIÓN";
-    const typeLine=lines[0]||"Actividad";const candidates=lines.filter(x=>x!==typeLine&&x!==status&&x!==course&&x!==dateLine&&!/^\d+\s*pts$/i.test(x));
+    const typeLine=lines[0]||"Actividad";const candidates=lines.filter(x=>x!==typeLine&&x!==status&&x!==course&&x!==dateLine&&!/^\d+\s*pts$/i.test(x)&&!/\.\.\.$/.test(x));
     const title=candidates.sort((a,b)=>b.length-a.length)[0]||typeLine;const due=parseDate(dateLine);const id=(row.url.match(/content\/([^/]+)/)||[])[1]||row.url;
-    return {id:`utp-${id}`,course:courseId(course),title,due:due||new Date(8640000000000000).toISOString(),label:labelDate(due),type:/calificad/i.test(typeLine)?"evaluation":"formative",urgent:/Por entregar|Vencida/i.test(status),weight:(lines.find(x=>/^\d+\s*pts$/i.test(x))||(/calificad/i.test(typeLine)?"Calificada":"No calificada")),url:row.url,status};
+    const graded=/^(Tarea|Evaluación|Examen|Práctica).*calificad/i.test(typeLine);
+    return {id:`utp-${id}`,course:courseId(course),title,due:due||new Date(8640000000000000).toISOString(),label:labelDate(due),type:graded?"evaluation":"formative",urgent:/Por entregar|Vencida/i.test(status),weight:(lines.find(x=>/^\d+\s*pts$/i.test(x))||(graded?"Calificada":"No calificada")),url:row.url,status};
   }).filter((task,index,all)=>all.findIndex(x=>x.url===task.url)===index);
 }
 
