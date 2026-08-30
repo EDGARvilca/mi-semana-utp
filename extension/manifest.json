@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Mi Semana UTP — Sincronizador",
+  "version": "1.0.0",
+  "description": "Sincroniza actividades visibles de UTP+class con Mi Semana UTP sin guardar credenciales.",
+  "permissions": ["tabs", "scripting"],
+  "host_permissions": ["https://class.utp.edu.pe/*", "https://edgarvilca.github.io/mi-semana-utp/*"],
+  "background": {"service_worker": "background.js"},
+  "content_scripts": [{
+    "matches": ["https://edgarvilca.github.io/mi-semana-utp/*"],
+    "js": ["bridge.js"],
+    "run_at": "document_idle"
+  }],
+  "action": {"default_title": "Sincronizar Mi Semana UTP"}
+}
+
