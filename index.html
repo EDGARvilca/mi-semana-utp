@@ -17,7 +17,7 @@
   <main class="shell">
     <header class="topbar">
       <div class="brand"><span class="brand-mark">U+</span><div><strong>Mi Semana UTP</strong><small>Ciclo 2026-2</small></div></div>
-      <div class="top-actions"><button id="syncButton" class="sync-button" type="button"><span class="sync-icon">↻</span><span>Sincronizar UTP+class</span></button><div class="today" id="todayLabel"></div></div>
+      <div class="top-actions"><button id="cloudButton" class="cloud-button" type="button"><span>☁</span><span id="cloudButtonLabel">Guardar en la nube</span></button><button id="syncButton" class="sync-button" type="button"><span class="sync-icon">↻</span><span>Sincronizar UTP+class</span></button><div class="today" id="todayLabel"></div></div>
     </header>
 
     <section class="welcome">
@@ -65,7 +65,19 @@
       <div class="empty-state" id="emptyState" hidden><span>✓</span><h3>No hay actividades aquí</h3><p>Prueba cambiando los filtros o disfruta de tu avance.</p></div>
     </section>
   </main>
+  <dialog id="authDialog" class="auth-dialog">
+    <form id="authForm" method="dialog">
+      <button class="dialog-close" value="cancel" aria-label="Cerrar">×</button>
+      <p class="eyebrow">SINCRONIZACIÓN SEGURA</p>
+      <h2>Tu progreso en todos tus dispositivos</h2>
+      <p>Escribe tu correo y recibirás un enlace para iniciar sesión. No necesitas crear otra contraseña.</p>
+      <label><span>Correo electrónico</span><input id="authEmail" type="email" autocomplete="email" required placeholder="tu-correo@ejemplo.com"></label>
+      <button id="sendLinkButton" class="auth-submit" type="submit">Enviar enlace de acceso</button>
+      <small id="authMessage" role="status" aria-live="polite">Tus actividades y marcas quedarán privadas.</small>
+    </form>
+  </dialog>
   <footer>Organizador personal · Los datos se basan en UTP+class al 29 de agosto de 2026.</footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="./app.js"></script>
 </body>
 </html>
