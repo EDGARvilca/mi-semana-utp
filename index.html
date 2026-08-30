@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#111827" />
+  <meta name="description" content="Organizador personal de clases, evaluaciones y tareas UTP." />
+  <title>Mi Semana UTP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">U+</span><div><strong>Mi Semana UTP</strong><small>Ciclo 2026-2</small></div></div>
+      <div class="today" id="todayLabel"></div>
+    </header>
+
+    <section class="welcome">
+      <div>
+        <p class="eyebrow">ORGANIZADOR ACADÉMICO</p>
+        <h1>Todo lo importante,<br><span>sin perder el ritmo.</span></h1>
+        <p class="welcome-copy">Clases, entregas y evaluaciones reunidas en un solo lugar. Marca lo que completas y tu avance quedará guardado en este dispositivo.</p>
+      </div>
+      <div class="progress-card">
+        <div class="progress-ring" id="progressRing"><span id="progressPercent">0%</span></div>
+        <div><small>PROGRESO GENERAL</small><strong id="progressCount">0 de 0</strong><p>actividades completadas</p></div>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="Secciones">
+      <button class="tab active" data-view="overview">Resumen</button>
+      <button class="tab" data-view="schedule">Horario</button>
+      <button class="tab" data-view="tasks">Actividades</button>
+    </nav>
+
+    <section id="overviewView" class="view active">
+      <div class="section-heading"><div><p class="eyebrow">LO PRÓXIMO</p><h2>Prioridades de la semana</h2></div><button class="text-button" data-go="tasks">Ver todas →</button></div>
+      <div class="priority-grid" id="priorityGrid"></div>
+      <div class="two-column">
+        <div class="panel"><div class="section-heading compact"><div><p class="eyebrow">HOY Y ESTA SEMANA</p><h2>Clases</h2></div><button class="text-button" data-go="schedule">Horario →</button></div><div id="miniSchedule"></div></div>
+        <div class="panel note-panel"><p class="eyebrow">RECORDATORIO CLAVE</p><h2>Las “no calificadas” también cuentan</h2><p>En Análisis y Diseño, el sílabo indica que el 10% de participación se obtiene del recuento de actividades virtuales. Trátalas como obligatorias.</p><div class="note-tag">PA · 10% del promedio</div></div>
+      </div>
+    </section>
+
+    <section id="scheduleView" class="view">
+      <div class="section-heading"><div><p class="eyebrow">HORARIO SEMANAL</p><h2>Tus clases</h2></div><span class="muted">Hora de Lima</span></div>
+      <div class="week-grid" id="weekGrid"></div>
+      <div class="async-row"><span>24/7</span><div><strong>Cursos asincrónicos</strong><p>Análisis y Diseño de Sistemas de Información · Investigación Operativa</p></div></div>
+    </section>
+
+    <section id="tasksView" class="view">
+      <div class="section-heading"><div><p class="eyebrow">PLAN DE ACCIÓN</p><h2>Actividades y evaluaciones</h2></div><button id="resetButton" class="reset-button">Reiniciar progreso</button></div>
+      <div class="filters">
+        <label><span>Curso</span><select id="courseFilter"><option value="all">Todos los cursos</option></select></label>
+        <label><span>Estado</span><select id="statusFilter"><option value="pending">Pendientes</option><option value="all">Todas</option><option value="done">Cumplidas</option></select></label>
+        <label><span>Tipo</span><select id="typeFilter"><option value="all">Todos</option><option value="urgent">Urgentes</option><option value="evaluation">Evaluaciones</option><option value="formative">Formativas</option></select></label>
+      </div>
+      <div class="task-list" id="taskList"></div>
+      <div class="empty-state" id="emptyState" hidden><span>✓</span><h3>No hay actividades aquí</h3><p>Prueba cambiando los filtros o disfruta de tu avance.</p></div>
+    </section>
+  </main>
+  <footer>Organizador personal · Los datos se basan en UTP+class al 29 de agosto de 2026.</footer>
+  <script src="./app.js"></script>
+</body>
+</html>
+
