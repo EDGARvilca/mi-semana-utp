@@ -24,7 +24,7 @@
       <div>
         <p class="eyebrow">ORGANIZADOR ACADÉMICO</p>
         <h1>Todo lo importante,<br><span>sin perder el ritmo.</span></h1>
-        <p class="welcome-copy">Clases, entregas y evaluaciones reunidas en un solo lugar. Marca lo que completas y tu avance quedará guardado en este dispositivo.</p>
+        <p class="welcome-copy">Clases, entregas y evaluaciones reunidas en un solo lugar. Inicia sesión para mantener tus actividades y avances iguales en todos tus dispositivos.</p>
       </div>
       <div class="progress-card">
         <div class="progress-ring" id="progressRing"><span id="progressPercent">0%</span></div>
@@ -70,9 +70,11 @@
       <button class="dialog-close" value="cancel" aria-label="Cerrar">×</button>
       <p class="eyebrow">SINCRONIZACIÓN SEGURA</p>
       <h2>Tu progreso en todos tus dispositivos</h2>
-      <p>Escribe tu correo y recibirás un enlace para iniciar sesión. No necesitas crear otra contraseña.</p>
+      <p>Entra con tu correo y contraseña. Si es tu primera vez, crea una cuenta con esos mismos datos.</p>
       <label><span>Correo electrónico</span><input id="authEmail" type="email" autocomplete="email" required placeholder="tu-correo@ejemplo.com"></label>
-      <button id="sendLinkButton" class="auth-submit" type="submit">Enviar enlace de acceso</button>
+      <label><span>Contraseña</span><input id="authPassword" type="password" autocomplete="current-password" required minlength="6" placeholder="Mínimo 6 caracteres"></label>
+      <button id="loginButton" class="auth-submit" type="submit">Iniciar sesión</button>
+      <button id="registerButton" class="auth-secondary" type="button">Crear cuenta</button>
       <small id="authMessage" role="status" aria-live="polite">Tus actividades y marcas quedarán privadas.</small>
     </form>
   </dialog>
